@@ -7,6 +7,9 @@ public class EnemyHealth : Character
     private CharacterDataSO _characterData;
     private EnemyUI _enemyUI;
 
+    [Header("Events")]
+    public OnEnemyDeathEventSO OnEnemyDeath;
+
     private void Start()
     {
         _characterData = GetComponent<EnemyData>().CharacterData;
@@ -23,7 +26,6 @@ public class EnemyHealth : Character
     public override void TakeDamage(float damage)
     {
         _healthPoint -= damage;
-
     }
 
     public override void RestoreHealth(float healAmount)

@@ -9,26 +9,33 @@ public class PlayerLook : MonoBehaviour
     public Transform arm;
 
     [Header("Settings")]
-    [SerializeField] private float xRotation = 0f;
-    public float xSensitivity = 30f;
-    public float ySensitivity = 30f;
+    public float mouseSensitivity;
+    [SerializeField] private float xRotation;
+    [SerializeField] private float yRotation;
+    public float topClam;
+    public float bottomClam;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     public void ProcessLook(Vector2 input)
     {
-        float mouseX = input.x;
-        float mouseY = input.y;
+        float mouseX = input.x * mouseSensitivity;
+        float mouseY = input.y * mouseSensitivity;
 
         //calculate camera rotation
-        xRotation -= (mouseY * Time.deltaTime) * ySensitivity;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, topClam, bottomClam);
+        yRotation += mouseX;
 
         //apply to camera transform
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+    }
 
-        if (arm != null)
-            arm.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
-        //rotate player to look left and right
-        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+    public Camera GetCam()
+    {
+        return Camera.main;
     }
 }

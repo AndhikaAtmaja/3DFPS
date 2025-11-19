@@ -5,16 +5,14 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    private StateMachine _stateMachine;
-    private NavMeshAgent agent;
-
-    public NavMeshAgent Agent { get => agent; }
+    public GameObject DebugObject;
 
     [SerializeField]
     private string currentState;
     public Waypoint path;
     [SerializeField] private GameObject _player;
     public GameObject player { get => _player; }
+    public Vector3 lastKnowPos {  get => _lastKnowPos;  set => _lastKnowPos = value; }
     public float sightDistance;
     public float fielddOfView;
     public float eyeHeight;
@@ -25,6 +23,11 @@ public class Enemy : MonoBehaviour
     public int currentAmmo;
     [Range(0.1f, 10f)]
     public float fireRate;
+
+    private Vector3 _lastKnowPos;
+    private StateMachine _stateMachine;
+    private NavMeshAgent agent;
+    public NavMeshAgent Agent { get => agent; }
 
     private void Start()
     {
@@ -40,6 +43,7 @@ public class Enemy : MonoBehaviour
     {
         CanSeePlayer();
         currentState = _stateMachine.activeState.ToString();
+        DebugObject.transform.position = lastKnowPos;
     }
 
     public bool CanSeePlayer()
