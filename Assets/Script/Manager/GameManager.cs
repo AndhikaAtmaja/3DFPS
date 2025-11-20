@@ -23,18 +23,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SaveSystem.Load();
         MusicManager.instance.PlayMusic("BGM1");
         SpawnerManager.instance.BeginSpawnLoop();
         StartPlayerUI();
-    }
-
-    private void Update()
-    {
-        if (enemyContainer.childCount > 5)
-        {
-            //stop spawning
-            SpawnerManager.instance.StopAllCoroutines();
-        }
     }
 
     public void StartPlayerUI()

@@ -82,6 +82,9 @@ MonoBehaviour:
   - groupID: Gun
     clips:
     - {fileID: 8300000, guid: b11155bc344a20a44a2c64550db2edbd, type: 3}
+  - groupID: Death
+    clips:
+    - {fileID: 8300000, guid: 01c792c6a48bcbf4489acdb977446733, type: 3}
 --- !u!114 &865152626467617284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +140,8 @@ AudioSource:
   m_GameObject: {fileID: 6836154402168096928}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 370607836098624564, guid: fd3f43a1a1b5b78469c64aa25841f436,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -265,7 +269,8 @@ AudioSource:
   m_GameObject: {fileID: 7901324810238113902}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3214159096736318717, guid: fd3f43a1a1b5b78469c64aa25841f436,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

@@ -59,6 +59,8 @@ public class PlayerHealth : Character
         if (_healthPoint <= 0)
         {
             onPlayerDeathEvent.OnPlayerDeath();
+            SoundManager.instance.Play2DSound("Death");
+            SaveSystem.Save();
         }
 
     }

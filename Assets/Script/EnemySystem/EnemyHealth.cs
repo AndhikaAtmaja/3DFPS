@@ -31,6 +31,7 @@ public class EnemyHealth : Character
         {
             ScoreManager.instance.AddScore(100);
             StatusManager.instance.UpdatekilledEnemyStatus();
+            SoundManager.instance.Play2DSound("Death");
             OnEnemyDeath.EnemyDeath();
             Destroy(gameObject);
         }

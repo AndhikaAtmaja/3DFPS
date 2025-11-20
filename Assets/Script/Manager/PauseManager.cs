@@ -34,4 +34,18 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    public void RestartGame()
+    {
+        LevelManager.instance.LoadScene("MainGame", "CrossFade");
+        isPaused = false;
+        Time.timeScale = 1f;
+    }
+
+    public void QuitGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        LevelManager.instance.LoadScene("MainMenu", "CrossFade");
+    }
 }

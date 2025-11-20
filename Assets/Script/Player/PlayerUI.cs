@@ -46,7 +46,7 @@ public class PlayerUI : MonoBehaviour
 
         if (CoolDownManager.instance.GetCoolDownUltimate() > 0)
         {
-            ultimateText.text = $"Skill : {CoolDownManager.instance.GetCoolDownUltimate().ToString("F2")}";
+            ultimateText.text = $"Ultimate : {CoolDownManager.instance.GetCoolDownUltimate().ToString("F2")}";
         }
         else
             ultimateText.text = $"Ultimate : READY!";
@@ -131,7 +131,6 @@ public class PlayerUI : MonoBehaviour
         onUltimateActivedEvent.OnUltimateActivedEvent   += UpgradeHealthUI;
         onUltimateDeactiveEvent.OnUltimateDeactiveEvent += ResetHealthUI;
         onUpdateScoreEvent.OnUpdateScoreEvent += UpdateScoreUI;
-        onStartUIPlayerEvent.OnStartUIPlayerEvent += IntiliazeScoreUI;
     }
 
     private void OnDisable()
@@ -139,6 +138,5 @@ public class PlayerUI : MonoBehaviour
         onUltimateActivedEvent.OnUltimateActivedEvent   -= UpgradeHealthUI;
         onUltimateDeactiveEvent.OnUltimateDeactiveEvent -= ResetHealthUI;
         onUpdateScoreEvent.OnUpdateScoreEvent -= UpdateScoreUI;
-        onStartUIPlayerEvent.OnStartUIPlayerEvent -= IntiliazeScoreUI;
     }
 }
