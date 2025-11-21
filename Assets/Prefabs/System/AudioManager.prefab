@@ -85,6 +85,9 @@ MonoBehaviour:
   - groupID: Death
     clips:
     - {fileID: 8300000, guid: 01c792c6a48bcbf4489acdb977446733, type: 3}
+  - groupID: Sword
+    clips:
+    - {fileID: 8300000, guid: f1b22c2880cb5db4fab675067a8cc811, type: 3}
 --- !u!114 &865152626467617284
 MonoBehaviour:
   m_ObjectHideFlags: 0

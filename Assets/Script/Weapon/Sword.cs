@@ -24,6 +24,7 @@ public class Sword : Weapon
 
             if (Physics.Raycast(ray, out RaycastHit hit, weaponData.rangeMelee, hitMask))
             {
+                SoundManager.instance.Play2DSound("Sword");
                 IDamageable dmg = hit.collider.GetComponent<IDamageable>();
                 if (dmg != null)
                 {

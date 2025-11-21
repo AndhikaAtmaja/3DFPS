@@ -48,11 +48,6 @@ public class PatrolState : State
                 enemy.Agent.SetDestination(enemy.path.waypoints[WaypointIndex].position);
                 stopTimer = 0;
             }
-
-            if (shotTimer > 5f && enemy.hasLastKnowPos)
-            {
-                ShootLastKnownPosition();
-            }
         }
     }
 

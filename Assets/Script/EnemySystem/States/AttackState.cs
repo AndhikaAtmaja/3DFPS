@@ -25,12 +25,16 @@ public class AttackState : State
             _losePlayerTimer = 0; 
             _moveTimer += Time.deltaTime;
             _shotTimer += Time.deltaTime;
-            enemy.transform.LookAt(enemy.player.transform);
+
+            Vector3 dir = (enemy.player.transform.position - enemy.transform.position).normalized;
+            Quaternion lookRot = Quaternion.LookRotation(dir);
+            enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, lookRot, Time.deltaTime * 5f);
+
 
             if (_shotTimer > enemy.fireRate)
             {
-                enemy.enemyAnimator.CancelIdleAnimation();
                 Shoot();
+                _shotTimer = 0;
             }
 
             if (_moveTimer > Random.Range(3, 7))
@@ -60,7 +64,6 @@ public class AttackState : State
             enemy.enemyAnimator.PlayAttackAnimation();
             enemy.enemyWeapon.EnemyAttack();
             enemy.currentAmmo--;
-            _shotTimer = 0;
         }
         else
         {
